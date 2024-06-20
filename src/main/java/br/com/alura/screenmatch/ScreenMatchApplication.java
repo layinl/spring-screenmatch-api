@@ -42,8 +42,6 @@ public class ScreenMatchApplication implements CommandLineRunner {
 			seasons.add(season);
 		}
 		seasons.forEach(System.out::println);
-
-		Queue<String> queue = new PriorityQueue<>();
 	}
 
 }
