@@ -1,5 +1,6 @@
 package br.com.alura.screenmatch;
 
+import br.com.alura.screenmatch.main.Main;
 import br.com.alura.screenmatch.model.Episode;
 import br.com.alura.screenmatch.model.Season;
 import br.com.alura.screenmatch.model.Series;
@@ -22,24 +23,8 @@ public class ScreenMatchApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		String title = "The-Office";
-		String json;
-		var converter = new JsonConverter();
-
-		json = APIConsumption.getData(STR."https://www.omdbapi.com/?t=\{title}&apikey=7e7539a");
-		Series series = converter.convert(json, Series.class);
-
-		json = APIConsumption.getData(STR."https://www.omdbapi.com/?t=\{title}&season=1&episode=2&apikey=7e7539a");
-		Episode episode = converter.convert(json, Episode.class);
-		System.out.println(series);
-
-		List<Season> seasons = new ArrayList<>();
-		for(int i = 1; i <= series.totalSeasons(); i++) {
-			json = APIConsumption.getData(STR."https://www.omdbapi.com/?t=\{title}&season=\{i}&apikey=7e7539a");
-			Season season = converter.convert(json, Season.class);
-			seasons.add(season);
-		}
-		seasons.forEach(System.out::println);
+		Main main = new Main();
+		main.showMenu();
 	}
 
 }
